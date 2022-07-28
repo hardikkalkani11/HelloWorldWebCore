@@ -3,7 +3,7 @@ phases:
   build:
     commands:
       - dotnet test ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
-      - Dotnet publish -c release -o ./build_output .src/HelloWorldWebCore.sln
+     # - Dotnet publish -c release -o ./build_output .src/HelloWorldWebCore.sln
 artifacts:
   files:
     - src/HelloWorldWebCore/build_output/*
