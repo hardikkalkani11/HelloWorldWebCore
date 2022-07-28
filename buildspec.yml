@@ -1,11 +1,15 @@
 version: 0.2
 phases:
-  build:
-    commands:
-      - dotnet test ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
-     # - Dotnet publish -c release -o ./build_output .src/HelloWorldWebCore.sln
+   pre_build
+       commands:
+          - echo Restore started on 'date'
+          - dotnet restore ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
+   build:
+       commands:
+          - echo Build started on 'date'
+          - dotnet publish -c release -o ./build_output ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
 artifacts:
-  files:
-    - src/HelloWorldWebCore/build_output/*
-    - appspec.yml
-    - installApp.sh
+   files:
+      - HelloWorldWebCore/build_output/**/*
+      - appspec.yml
+      - installApp.sh
