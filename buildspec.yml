@@ -8,8 +8,8 @@ env:
 phases:
   build:
     commands:
-      #- '& nuget restore $env:SOLUTION -PackagesDirectory $env:PACKAGE_DIRECTORY'
-      - '& msbuild -p:FrameworkPathOverride="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v$env:DOTNET_FRAMEWORK" $env:SOLUTION'
+      - dotnet test ./HelloWorldWebCore.sln
+      - dotnet publish -c release -o ./build_output ./HelloWorldWebCore.csproj
 artifacts:
   files:
     - .\HelloWorldWebCore\bin\Debug\*
