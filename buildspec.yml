@@ -12,7 +12,8 @@ phases:
     - dotnet vstest HelloWorldWebCore/build_output/HelloWorldWebCore.dll
  post_build:
   commands:
- artifacts:
+  
+artifacts:
   files:
 #    - template.yml
     - HelloWorldWebCore/build_output/**/*
