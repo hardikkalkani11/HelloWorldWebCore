@@ -1,11 +1,11 @@
 version: 0.2
-    phases:
-        build:
-          commands:
-                    - dotnet test ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
-                    - Dotnet publish -c release -o ./build_output .src/HelloWorldWebCore/HelloWorldWebCore.csproj
-          artifacts:
-              files:
-                  - src/HelloWorldWebCore/build_output/*
-                  - appspec.yml
-                  - installApp.sh
+phases:
+  build:
+    commands:
+      - dotnet test ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
+      - Dotnet publish -c release -o ./build_output .src/HelloWorldWebCore/HelloWorldWebCore.csproj
+artifacts:
+  files:
+    - src/HelloWorldWebCore/build_output/*
+    - appspec.yml
+    - installApp.sh
