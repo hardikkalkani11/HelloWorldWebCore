@@ -9,8 +9,8 @@ phases:
       
   pre_build:
     commands:
-      - echo Restore started on `date`
-      - dotnet restore HelloWorldWebCore.csproj
+     # - echo Restore started on `date`
+     # - dotnet restore HelloWorldWebCore.csproj
       
   build:
     commands:
