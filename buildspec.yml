@@ -1,9 +1,9 @@
 version: 0.2
 phases:
-   pre_build
-       commands:
-          - echo Restore started on 'date'
-          - dotnet restore ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
+ #  pre_build
+    #   commands:
+    #      - echo Restore started on 'date'
+    #      - dotnet restore ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
    build:
        commands:
           - echo Build started on 'date'
