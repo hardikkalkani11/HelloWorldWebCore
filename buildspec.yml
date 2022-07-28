@@ -7,25 +7,21 @@ phases:
     runtime-versions:
       dotnet: latest
       
-  pre_build:
-    commands:
-     # - echo Restore started on `date`
-     # - dotnet restore HelloWorldWebCore.csproj
       
   build:
     commands:
       - echo Build started on `date`
-      - dotnet test ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
-      - dotnet build ./HelloWorldWebCore.csproj
+      - dotnet test ./src/HelloWorldWebCore/HelloWorldWebCore.sln
+      - dotnet build ./HelloWorldWebCore.sln
       
   post_build:
     commands:
       - echo Publish started on `date`
       # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/dotnet-linux-platform-bundle-app.html
-      - dotnet publish -c Release -r linux-x64 --self-contained false HelloWorldWebCore.csproj
+      - dotnet publish -c Release -r linux-x64 --self-contained false HelloWorldWebCore.sln
       
 artifacts:
   files:
     - '**/*'
-  base-directory: ./bin/Release/netcoreapp3.1/linux-x64/publish/
-  discard-paths: no
+ # base-directory: ./bin/Release/netcoreapp3.1/linux-x64/publish/
+ # discard-paths: no
