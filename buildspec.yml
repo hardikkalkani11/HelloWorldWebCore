@@ -1,23 +1,22 @@
 version: 0.2
-
 phases:
 pre_build:
-commands:
-- pip install --upgrade awscli
-- dotnet restore ./HelloWorldWebCore/HelloWorldWebCore.csproj
-- dotnet restore ./HelloTests/HelloTests.csproj
+   commands:
+      - pip install --upgrade awscli
+      - dotnet restore ./HelloWorldWebCore/HelloWorldWebCore.csproj
+      - dotnet restore ./HelloTests/HelloTests.csproj
 build:
-commands:
-- dotnet publish -c release -o ./build_output ./HelloWorldWebCore/HelloWorldWebCore.csproj
-- dotnet publish -c release -o ./test_output ./HelloTests/HelloTests.csproj
-- dotnet vstest HelloTests/test_output/HelloTests.dll
+   commands:
+      - dotnet publish -c release -o ./build_output ./HelloWorldWebCore/HelloWorldWebCore.csproj
+      - dotnet publish -c release -o ./test_output ./HelloTests/HelloTests.csproj
+      - dotnet vstest HelloTests/test_output/HelloTests.dll
 post_build:
-commands:
+  commands:
 artifacts:
-files:
-- template.yml
-- installApp.sh
-- HelloWorldWebCore/build_output/**/*
-- scripts/**/*
-- appspec.yml
-- appsettings.json
+  files:
+      - template.yml
+      - installApp.sh
+      - HelloWorldWebCore/build_output/**/*
+      - scripts/**/*
+      - appspec.yml
+      - appsettings.json
