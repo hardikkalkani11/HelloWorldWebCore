@@ -1,12 +1,22 @@
 version: 0.2
-
 phases:
-  build:
-    commands:
-      - dotnet test ./src/HelloTests/HelloTests.csproj
-      - dotnet publish -c release -o ./build_output ./src/HelloWorldWebCore/HelloWorldWebCore.csproj
+pre_build:
+commands:
+- pip install --upgrade awscli
+- dotnet restore ./HelloWorldWebCore/HelloWorldWebCore.csproj
+- dotnet restore ./HelloTests/HelloTests.csproj
+build:
+commands:
+- dotnet publish -c release -o ./build_output ./HelloWorldWebCore/HelloWorldWebCore.csproj
+- dotnet publish -c release -o ./test_output ./HelloTests/HelloTests.csproj
+- dotnet vstest HelloTests/test_output/HelloTests.dll
+post_build:
+commands:
 artifacts:
-  files:
-    - src/HelloWorldWebCore/build_output/*
-    - appspec.yml
-    - installApp.sh
+files:
+- template.yml
+- installApp.sh
+- HelloWorldWebCore/build_output/**/*
+- scripts/**/*
+- appspec.yml
+- appsettings.json
